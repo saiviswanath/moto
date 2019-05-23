@@ -25,7 +25,7 @@ from .exceptions import (
 DEFAULT_ACCOUNT_ID = 123456789012
 DEFAULT_SENDER_ID = "AIDAIT2UOQQY3AUEKVGXU"
 
-TRANSPORT_TYPE_ENCODINGS = {'String': b'\x01', 'Binary': b'\x02', 'Number': b'\x01'}
+TRANSPORT_TYPE_ENCODINGS = {'String': b'\x01', 'Binary': b'\x02', 'Number': b'\x01', 'Number.java.lang.Long': b'\x01'}
 
 
 class Message(BaseModel):
@@ -81,7 +81,7 @@ class Message(BaseModel):
             encoded += struct.pack(struct_format, len(data_type)) + utf8(data_type)
             encoded += TRANSPORT_TYPE_ENCODINGS[data_type]
 
-            if data_type == 'String' or data_type == 'Number':
+            if data_type == 'String' or data_type == 'Number' or data_type == 'Number.java.lang.Long':
                 value = attr['string_value']
             elif data_type == 'Binary':
                 print(data_type, attr['binary_value'], type(attr['binary_value']))

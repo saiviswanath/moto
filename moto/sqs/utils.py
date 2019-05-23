@@ -30,7 +30,7 @@ def parse_message_attributes(querystring, base='', value_namespace='Value.'):
                 "The message attribute '{0}' must contain non-empty message attribute value.".format(name[0]))
 
         data_type_parts = data_type[0].split('.')
-        if len(data_type_parts) > 2 or data_type_parts[0] not in ['String', 'Binary', 'Number']:
+        if data_type_parts[0] not in ['String', 'Binary', 'Number']:
             raise MessageAttributesInvalid(
                 "The message attribute '{0}' has an invalid message attribute type, the set of supported type prefixes is Binary, Number, and String.".format(name[0]))
 
